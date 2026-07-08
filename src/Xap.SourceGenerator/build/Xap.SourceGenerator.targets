@@ -1,0 +1,8 @@
+<Project>
+  <!-- Must stay in .targets, not .props: NuGet imports .props before the consumer's project
+       body (so @(XapSpec) is still empty there) and .targets after (so it's populated). Moving
+       this bridge to .props silently emits nothing, with no error, just an empty generator. -->
+  <ItemGroup>
+    <AdditionalFiles Include="@(XapSpec)" SourceItemType="XapSpec" />
+  </ItemGroup>
+</Project>

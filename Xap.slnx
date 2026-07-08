@@ -1,0 +1,14 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/Xap.Hid/Xap.Hid.csproj" />
+    <Project Path="src/Xap.WebHid/Xap.WebHid.csproj" />
+  </Folder>
+  <Project Path="src/Xap.Core/Xap.Core.csproj" Type="fae04c0a-71b0-4c3f-b06e-80508bfe00d9" />
+  <Project Path="src/Xap.SourceGenerator/Xap.SourceGenerator.csproj" Type="fae04c0a-71b0-4c3f-b06e-80508bfe00d9" />
+  <Project Path="tests/Xap.Tests/Xap.Tests.csproj" Type="fae04c0a-71b0-4c3f-b06e-80508bfe00d9" />
+</Solution>

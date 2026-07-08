@@ -1,0 +1,10 @@
+# Copyright 2026 QMK Collaborators
+# SPDX-License-Identifier: MIT
+# Layers the wasm-tools workload (Emscripten toolchain + browser-wasm runtime packs) on top of
+# the official SDK image. Unlike Native AOT, Microsoft does not publish a pre-built "-wasm" SDK
+# tag, and this host's own dotnet install can't add the workload (read-only /usr/share/dotnet),
+# so the workload is installed once here instead of on every build.
+FROM mcr.microsoft.com/dotnet/sdk:10.0
+RUN apt-get update && apt-get install -y --no-install-recommends python3 \
+    && rm -rf /var/lib/apt/lists/*
+RUN dotnet workload install wasm-tools wasm-experimental --skip-manifest-update
