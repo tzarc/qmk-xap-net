@@ -45,6 +45,8 @@ static async Task PrintDeviceAsync(DeviceInfo info)
 
         if (client.Qmk.HasVersionQuery)
             Console.WriteLine($"  QMK version:        {await client.Qmk.GetVersionAsync()}");
+        if (client.Qmk.HasKeycodesVersionQuery)
+            Console.WriteLine($"  Keycodes version:   {await client.Qmk.GetKeycodesVersionAsync()}");
         if (client.Qmk.HasGetBoardIdentifiers)
         {
             var id = await client.Qmk.GetBoardIdentifiersAsync();

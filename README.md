@@ -66,7 +66,7 @@ finally
 
 ## Spec files
 
-`spec/` carries the XAP spec versions (0.0.1 through 0.3.0) as published by [QMK](https://github.com/qmk/qmk_firmware). Pick the version your firmware speaks; the generated client only contains what that spec declares.
+`spec/` carries the XAP spec versions (0.0.1 through 0.3.1) as published by [QMK](https://github.com/qmk/qmk_firmware). Pick the version your firmware speaks; the generated client only contains what that spec declares.
 
 ## Samples
 

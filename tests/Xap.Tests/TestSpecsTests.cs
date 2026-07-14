@@ -9,7 +9,7 @@ public class TestSpecsTests
     [Fact]
     public void Load_ReturnsRealSpecText_ForEveryShippedVersion()
     {
-        foreach (string? v in new[] { "0.0.1", "0.1.0", "0.2.0", "0.3.0" })
+        foreach (string? v in new[] { "0.0.1", "0.1.0", "0.2.0", "0.3.0", "0.3.1" })
         {
             string json = TestSpecs.Load(v);
             Assert.Contains("\"routes\"", json);

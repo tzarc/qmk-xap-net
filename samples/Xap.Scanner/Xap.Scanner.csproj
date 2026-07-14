@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <XapSpec Include="../../spec/xap_0.3.0.json" />
+    <XapSpec Include="../../spec/xap_0.3.1.json" />
   </ItemGroup>
 
 </Project>

@@ -41,6 +41,8 @@ partial class App
 
             if (client.Qmk.HasVersionQuery)
                 sb.AppendLine($"QMK version:        {await client.Qmk.GetVersionAsync()}");
+            if (client.Qmk.HasKeycodesVersionQuery)
+                sb.AppendLine($"Keycodes version:   {await client.Qmk.GetKeycodesVersionAsync()}");
             if (client.Qmk.HasGetBoardIdentifiers)
             {
                 var id = await client.Qmk.GetBoardIdentifiersAsync();
