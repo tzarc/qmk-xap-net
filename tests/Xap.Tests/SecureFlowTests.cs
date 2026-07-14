@@ -93,7 +93,7 @@ public class SecureFlowTests
 
             await task.WaitAsync(TimeSpan.FromSeconds(5));
 
-            Assert.Equal((byte)2, task.GetType().GetProperty("Result")!.GetValue(task));
+            Assert.Equal(XapSecureStatus.Unlocked, task.GetType().GetProperty("Result")!.GetValue(task));
             Assert.True(GetSecureUnlocked(clientType, client));
         }
         finally

@@ -108,7 +108,7 @@ internal static class BroadcastGenerator
 
     private static string EventDelegateType(BroadcastMessage msg) => msg.Define switch
     {
-        "SECURE_STATUS" => "System.Func<byte, Task>",
+        "SECURE_STATUS" => "System.Func<XapSecureStatus, Task>",
         _ => "System.Func<System.ReadOnlyMemory<byte>, Task>",
     };
 
@@ -127,7 +127,7 @@ internal static class BroadcastGenerator
             case "SECURE_STATUS":
                 sb.AppendLine("                    if (payload.Length < 1)");
                 sb.AppendLine("                        throw new XapParseException(\"SECURE_STATUS broadcast payload must be at least 1 byte.\");");
-                sb.AppendLine("                    byte status = payload.Span[0];");
+                sb.AppendLine("                    var status = (XapSecureStatus)payload.Span[0];");
                 sb.AppendLine("                    await AwaitAllAsync(SecureStatusChanged, status);");
                 sb.AppendLine("                    break;");
                 break;

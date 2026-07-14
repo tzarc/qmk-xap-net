@@ -34,15 +34,15 @@ public class BroadcastTests
         try
         {
             EventInfo eventInfo = clientType.GetEvent("SecureStatusChanged")!;
-            var tcs = new TaskCompletionSource<byte>(TaskCreationOptions.RunContinuationsAsynchronously);
-            Func<byte, Task> handler = status => { tcs.TrySetResult(status); return Task.CompletedTask; };
+            var tcs = new TaskCompletionSource<XapSecureStatus>(TaskCreationOptions.RunContinuationsAsynchronously);
+            Func<XapSecureStatus, Task> handler = status => { tcs.TrySetResult(status); return Task.CompletedTask; };
             eventInfo.AddEventHandler(client, handler);
 
             // XapBroadcast.SecureStatus == 0x01; payload is a single status byte, 0x02 = "allowed".
             transport.QueueResponse(BuildBroadcastFrame(0x01, [0x02]));
 
-            byte raisedStatus = await tcs.Task.WaitAsync(TimeSpan.FromSeconds(5));
-            Assert.Equal((byte)0x02, raisedStatus);
+            XapSecureStatus raisedStatus = await tcs.Task.WaitAsync(TimeSpan.FromSeconds(5));
+            Assert.Equal(XapSecureStatus.Unlocked, raisedStatus);
 
             bool secureUnlocked = (bool)clientType.GetProperty("SecureUnlocked")!.GetValue(client)!;
             Assert.True(secureUnlocked);

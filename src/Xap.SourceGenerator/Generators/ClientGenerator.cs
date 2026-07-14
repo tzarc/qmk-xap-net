@@ -413,6 +413,9 @@ internal static class ClientGenerator
         if (cmd.ReturnType == "u32" && cmd.ReturnPurpose == "bcd-version")
             return ("XapVersion", "XapVersion.ReadFrom");
 
+        if (cmd.Define == "GET_SECURE_STATUS" && cmd.ReturnType == "u8")
+            return ("XapSecureStatus", "static s => (XapSecureStatus)XapReaders.U8(s)");
+
         if (cmd.ReturnType == "string")
             return ("string", "XapReaders.String");
 
